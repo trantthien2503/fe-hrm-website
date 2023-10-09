@@ -11,8 +11,6 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NgZorroAntModule } from './ng-zorro-ant.module';
 
 registerLocaleData(en);
@@ -29,8 +27,6 @@ registerLocaleData(en);
     ReactiveFormsModule,
     BrowserAnimationsModule,
     IconsProviderModule,
-    NzLayoutModule,
-    NzMenuModule,
     NgZorroAntModule,
   ],
   providers: [
