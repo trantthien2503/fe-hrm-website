@@ -27,7 +27,7 @@ export class ManagementComponent implements OnInit {
         {
           title: 'Danh sách nhân viên',
           icon: '',
-          router: '/staffs'
+          router: '/management/staffs'
         }
       ]
     },
@@ -45,5 +45,13 @@ export class ManagementComponent implements OnInit {
 
   chooseItemMenu(title: string){
     this.title = title;
+  }
+
+  logout(){
+    const stringUser = localStorage.getItem('user')
+    if(stringUser){
+      localStorage.removeItem('user');
+    }
+    this.router.navigateByUrl('login')
   }
 }

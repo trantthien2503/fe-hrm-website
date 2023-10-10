@@ -1,5 +1,5 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, NonNullableFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,31 +7,35 @@ import { FormGroup, FormControl, Validators, NonNullableFormBuilder } from '@ang
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  validateForm: FormGroup<{
-    userName: FormControl<string>;
-    password: FormControl<string>;
-    remember: FormControl<boolean>;
-  }> = this.fb.group({
-    userName: ['', [Validators.required]],
-    password: ['', [Validators.required]],
-    remember: [true]
-  });
-
-  submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
-    } else {
-      Object.values(this.validateForm.controls).forEach(control => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
-    }
-  }
-  constructor(private fb: NonNullableFormBuilder) { }
+  isShowLogin = true;
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    let stringUser = localStorage.getItem('user')
+    if(stringUser){
+      this.router.navigateByUrl('/management')
+    }
   }
 
+  isRegister(event: any){
+    if (event){
+      this.isShowLogin = false;
+    }
+  }
+
+  isLogin(event: any){
+    if (event){
+      this.isShowLogin = true;
+    }
+  }
+
+  isLoginSuccess(event: any){
+    if(event.isLogin == true && event.user){
+      const stringUser = JSON.stringify(event.user);
+      localStorage.setItem('user', stringUser);
+      this.router.navigateByUrl('/management')
+    }
+  }
 }

@@ -8,8 +8,16 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: ManagementComponent
+    component: ManagementComponent,
+    children: [
+      {
+        path: 'staffs',
+        loadChildren: () =>
+          import('./staffs/staffs.module').then((m) => m.StaffsModule),
+      },
+    ]
   },
+
 ];
 
 @NgModule({
@@ -18,7 +26,7 @@ const routes: Routes = [
     NgZorroAntModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ],
   declarations: [ManagementComponent]
 })

@@ -24,7 +24,21 @@
   <nz-layout>
     <nz-header>
       <div class="app-header">
-        <h2>{{title}}</h2>
+        <div class="title">
+          <h2>{{title}}</h2>
+        </div>
+        <div class="icon">
+          <nz-avatar nz-dropdown [nzDropdownMenu]="menu" nzIcon="user"
+            nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu nzSelectable>
+              <li nz-menu-item>1st menu item</li>
+              <li nz-menu-item>2nd menu item</li>
+              <li nz-menu-item>3rd menu item</li>
+              <li nz-menu-item nzDanger (click)="logout()">Đăng xuất</li>
+            </ul>
+          </nz-dropdown-menu>
+        </div>
       </div>
     </nz-header>
     <nz-content>
