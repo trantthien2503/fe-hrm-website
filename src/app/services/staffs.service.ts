@@ -17,5 +17,10 @@ export class StaffsService {
   }
 
 
+  addMultiple(data: any): Observable<any> {
+    const url = `${urlStaff}/add-multiple`;
+    return this.httpclient.post(url, data);
+  }
+
 
 }

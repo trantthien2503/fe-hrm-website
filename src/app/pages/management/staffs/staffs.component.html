@@ -1,34 +1,59 @@
-<nz-table #fixedTable [nzData]="staffs" [nzScroll]="{ x: '1150px', y: '240px' }">
-  <thead>
-    <tr>
-      <th nzLeft>Tên đầy đủ</th>
-      <th nzLeft>Giới tính</th>
-      <th>Ngày sinh</th>
-      <th>Column 2</th>
-      <th>Column 3</th>
-      <th>Column 4</th>
-      <th>Column 5</th>
-      <th>Column 6</th>
-      <th>Column 7</th>
-      <th>Column 8</th>
-      <th nzRight>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let data of fixedTable.data">
-      <td nzLeft>{{ data.firstname + ' ' + data.lastname }}</td>
-      <td nzLeft>{{ generateFamale(data.female) }}</td>
-      <td>{{ data.datebirth | date: 'MM/dd/yyyy' }}</td>
-      <td>{{ data.address }}</td>
-      <td>{{ data.address }}</td>
-      <td>{{ data.address }}</td>
-      <td>{{ data.address }}</td>
-      <td>{{ data.address }}</td>
-      <td>{{ data.address }}</td>
-      <td>{{ data.address }}</td>
-      <td nzRight>
-        <a>action</a>
-      </td>
-    </tr>
-  </tbody>
-</nz-table>
+<div class="_staff_main">
+  <div class="_header">
+    <span>Số lượng nhân viên: {{staffs.length}}</span>
+    <div class="_buttons">
+      <div class="_btn_add">
+        <input style="display: none;" id="input_file_xlsx" type="file" #fileImportInput name="File Upload"
+          (change)="fileChangeListener($event)" accept=".csv">
+        <button nz-button nzType="primary" (click)="callUploadFile()">
+          <span style="margin-right: 4px" nz-icon nzType="download"></span>Tải
+          lên</button>
+        <button nz-button nzType="primary" (click)="callTemplateAddStaff()">Thêm nhân viên</button>
+      </div>
+    </div>
+  </div>
+  <div class="_body">
+    <nz-table #fixedTable [nzData]="staffs" [nzScroll]="{ x: '1150px', y: '240px' }">
+      <thead>
+        <tr>
+          <th nzLeft>Tên đầy đủ</th>
+          <th nzLeft>Giới tính</th>
+          <th>Ngày sinh</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+          <th>Column 4</th>
+          <th>Column 5</th>
+          <th>Column 6</th>
+          <th>Column 7</th>
+          <th>Column 8</th>
+          <th nzRight>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of fixedTable.data">
+          <td nzLeft>{{ data.firstname + ' ' + data.lastname }}</td>
+          <td nzLeft>{{ generateFamale(data.female) }}</td>
+          <td>{{ data.datebirth | date: 'MM/dd/yyyy' }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.address }}</td>
+          <td nzRight>
+            <a>action</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+
+<nz-modal [nzWidth]="'64vw'" [(nzVisible)]="isTemplateAddStaff" nzTitle="Thêm nhân viên"
+  (nzOnCancel)="outputCancelStaff()" [nzFooter]="null">
+  <ng-container *nzModalContent>
+    <app-add-staff (outputAddStaff)="outputAddStaff($event)"
+      (outputCancelStaff)="outputCancelStaff($event)"></app-add-staff>
+  </ng-container>
+</nz-modal>

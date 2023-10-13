@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     let stringUser = localStorage.getItem('user')
     if(stringUser){
-      this.router.navigateByUrl('/management')
+      this.routerLoginSucess()
     }
   }
 
@@ -31,11 +31,16 @@ export class LoginComponent implements OnInit {
     }
   }
 
+
   isLoginSuccess(event: any){
     if(event.isLogin == true && event.user){
       const stringUser = JSON.stringify(event.user);
       localStorage.setItem('user', stringUser);
-      this.router.navigateByUrl('/management')
+      this.routerLoginSucess()
     }
+  }
+
+  routerLoginSucess(){
+    this.router.navigateByUrl('/management/dashboard')
   }
 }

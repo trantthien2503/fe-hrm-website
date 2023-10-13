@@ -14,9 +14,9 @@ export class ManagementComponent implements OnInit {
       icon: 'dashboard',
       childs: [
         {
-          title: 'Welcome',
+          title: 'Tổng quan',
           icon: '',
-          router: '/welcome'
+          router: '/management/dashboard'
         }
       ]
     },
@@ -33,13 +33,19 @@ export class ManagementComponent implements OnInit {
     },
   ]
 
-  public title: string = 'Danh sách nhân viên';
+  public title: string = 'Tổng quan';
   public isCollapsed = false;
+  public user: any;
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
+    const stringUser = localStorage.getItem('user')
+    if(stringUser){
+      this.user = JSON.parse(stringUser);
+    }
+
   }
 
 

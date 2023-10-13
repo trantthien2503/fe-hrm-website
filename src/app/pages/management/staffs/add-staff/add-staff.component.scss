@@ -1,0 +1,32 @@
+._main_add_staff {
+  height: 64vh;
+  ._content {
+    height: 92%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    form {
+      width: 100%;
+      height: 100%;
+      nz-form-item {
+        margin: 0 !important;
+        .ant-form-item-label {
+          text-align: left !important;
+        }
+      }
+    }
+  }
+  ._footer {
+    position: relative;
+    display: flex;
+    height: 8%;
+    align-items: center;
+    justify-content: flex-end;
+    button {
+      &:first-child {
+        margin-right: 4px;
+      }
+    }
+  }
+}

@@ -11,10 +11,16 @@ const routes: Routes = [
     component: ManagementComponent,
     children: [
       {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+      },
+      {
         path: 'staffs',
         loadChildren: () =>
           import('./staffs/staffs.module').then((m) => m.StaffsModule),
       },
+
     ]
   },
 
