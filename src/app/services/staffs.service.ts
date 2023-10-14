@@ -11,7 +11,7 @@ export class StaffsService {
 
   constructor(private httpclient: HttpClient) {}
 
-  getAllStaffs(): Observable<any[]> {
+  getAllStaffs(): Observable<any> {
     const url = `${urlStaff}/get-all`
     return this.httpclient.get<any[]>(url);
   }

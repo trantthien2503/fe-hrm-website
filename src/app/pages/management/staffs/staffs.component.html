@@ -4,16 +4,16 @@
     <div class="_buttons">
       <div class="_btn_add">
         <input style="display: none;" id="input_file_xlsx" type="file" #fileImportInput name="File Upload"
-          (change)="fileChangeListener($event)" accept=".csv">
-        <button nz-button nzType="primary" (click)="callUploadFile()">
-          <span style="margin-right: 4px" nz-icon nzType="download"></span>Tải
+          (change)="fileChangeListener($event)" accept=".xlsx">
+        <button style="margin-right: 4px" nz-button nzType="primary" (click)="callUploadFile()">
+          <span style="margin-right: 2px" nz-icon nzType="download"></span>Tải
           lên</button>
         <button nz-button nzType="primary" (click)="callTemplateAddStaff()">Thêm nhân viên</button>
       </div>
     </div>
   </div>
   <div class="_body">
-    <nz-table #fixedTable [nzData]="staffs" [nzScroll]="{ x: '1150px', y: '240px' }">
+    <nz-table #fixedTable [nzData]="staffs" [nzScroll]="{ x: '1150px', y: '600px' }">
       <thead>
         <tr>
           <th nzLeft>Tên đầy đủ</th>

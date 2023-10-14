@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgxCSVParserError, NgxCsvParser } from 'ngx-csv-parser';
+import { ExcelService } from 'src/app/services/excel.service';
 import { StaffsService } from 'src/app/services/staffs.service';
 
 @Component({
@@ -11,14 +11,16 @@ export class StaffsComponent implements OnInit {
   @ViewChild('fileImportInput') fileImportInput: any;
   public staffs: Array<any> = [];
   public isTemplateAddStaff = false;
-  csvRecords: any;
-  header: boolean = false;
   constructor(
     private staffsService: StaffsService,
-    private ngxCsvParser: NgxCsvParser
+    private excelService: ExcelService
   ) {}
 
   ngOnInit() {
+    this.getStaffs();
+  }
+
+  getStaffs() {
     this.staffsService.getAllStaffs().subscribe(
       (response: any) => {
         if (response) {
@@ -42,31 +44,20 @@ export class StaffsComponent implements OnInit {
     document.getElementById('input_file_xlsx')?.click();
   }
 
-
-  fileChangeListener($event: any): void {
-    const files = $event.srcElement.files;
-    this.header =
-      (this.header as unknown as string) === 'true' || this.header === true;
-
-    this.ngxCsvParser
-      .parse(files[0], {
-        header: this.header,
-        delimiter: ',',
-        encoding: 'utf8',
-      })
-      .pipe()
-      .subscribe(
-        (result: any) => {
-          this.csvRecords = result;
-          this.staffsService.addMultiple({data: result.toString()}).subscribe((response: any)=>{
+  fileChangeListener(event: any): void {
+    const file = event.target.files[0];
+    this.excelService.readExcel(file).then((data) => {
+      if (data) {
+        this.staffsService
+          .addMultiple({ data: data })
+          .subscribe((response: any) => {
             console.log('this.staffsService.addMultiple', response);
-
-          })
-        },
-        (error: NgxCSVParserError) => {
-          console.log('Error', error);
-        }
-      );
+            if (response) {
+              this.getStaffs();
+            }
+          });
+      }
+    });
   }
   /** Hàm thực hiện gọi giao diện thêm nhân viên
    *
