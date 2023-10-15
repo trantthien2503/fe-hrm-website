@@ -1,17 +1,186 @@
 <div class="_main_add_staff">
   <div class="_content">
-    <form nz-form [formGroup]="validateForm">
+    <form nz-form [formGroup]="staffForm">
       <div nz-row>
         <div nz-col nzSpan="12">
+          <!-- Mã nhân viên -->
           <nz-form-item>
-            <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
-            <nz-form-control [nzSm]="16" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
-              <input nz-input formControlName="email" id="email" />
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzRequired nzFor="usercode">Mã NV(ID)</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24" nzErrorTip="Mã nhân viên không được trống">
+              <input nz-input formControlName="usercode" id="usercode" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Họ tên lót -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="firstname">Họ tên lót</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="firstname" id="firstname" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Tên -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="lastname">Tên</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="lastname" id="lastname" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- E-mailE-mail -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="email">E-mail</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input type="email" formControlName="email" id="email" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Ngày sinh -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="datebirth">Ngày sinh</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input type="date" nz-input formControlName="datebirth" id="datebirth" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Giới tính -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="female">Giới tính</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input type="checkbox" nz-input formControlName="female" id="female" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Số CMND/CCCD -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="idcode">Số CMND/CCCD</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="idcode" id="idcode" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Ngày cấp -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="daterange">Ngày cấp</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="daterange" id="daterange" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Điện thoại liên lạc -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="cellphone">Điện thoại liên lạc</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="cellphone" id="cellphone" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Địa chỉ thường trú -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="address">Địa chỉ thường trú</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="address" id="address" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Địa chỉ tạm trú -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="address2">Địa chỉ tạm trú</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="address2" id="address2" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Nguyên(quê) quán -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="domicile">Nguyên quán</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="domicile" id="domicile" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Quốc tịch -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="nationalcode">Quốc tịch</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="nationalcode" id="nationalcode" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Dân tộc -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="ethniccode">Dân tộc</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="ethniccode" id="ethniccode" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Tôn giáo -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="religioncode">Tôn giáo</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="religioncode" id="religioncode" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Trình độ học vấn -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="educationallevel">Trình độ học vấn</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="educationallevel" id="educationallevel" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Hôn nhân -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="citizenshipcode">Hôn nhân</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="citizenshipcode" id="citizenshipcode" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Chức vụ, Chức danh -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="jobtitlecode">Chức vụ, Chức danh</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="jobtitlecode" id="jobtitlecode" />
             </nz-form-control>
           </nz-form-item>
         </div>
         <div nz-col nzSpan="12">
+          <!-- Tên ngân hàng -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="bankname">Tên ngân hàng</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="bankname" id="bankname" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Nhóm máu -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="bloodtype">Nhóm máu</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="bloodtype" id="bloodtype" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Mã vân tay/ thẻ -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="cardnumber">Mã vân tay/ thẻ</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="cardnumber" id="cardnumber" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- STT lương -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="countersalary">STT lương</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="countersalary" id="countersalary" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Ngày vào làm -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="dateapply">Ngày vào làm</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input type="date" formControlName="dateapply" id="dateapply" />
+            </nz-form-control>
+          </nz-form-item>
+          <!-- Số sổ BHXH -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="numberinsurance">Số sổ BHXH</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input formControlName="numberinsurance" id="numberinsurance" />
+            </nz-form-control>
+          </nz-form-item>
 
+          <!-- Ngày cấp sổ làm -->
+          <nz-form-item>
+            <nz-form-label [nzSm]="4" [nzXs]="24" nzFor="dateregisterinsurance">Ngày cấp sổ</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <input nz-input type="date" formControlName="dateregisterinsurance" id="dateregisterinsurance" />
+            </nz-form-control>
+          </nz-form-item>
         </div>
       </div>
     </form>

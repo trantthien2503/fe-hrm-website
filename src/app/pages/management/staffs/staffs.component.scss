@@ -1,23 +1,23 @@
-._staff_main{
+._staff_main {
   position: relative;
   width: 100%;
   height: 100%;
-  ._header{
+  ._header {
     height: 8%;
     position: relative;
     display: flex;
     justify-content: space-between;
-    ._buttons{
-      ._btn_add{
-        button{
-          &:first-child{
+    ._buttons {
+      ._btn_add {
+        button {
+          &:first-child {
             margin-right: 4px;
           }
         }
       }
     }
   }
-  ._body{
+  ._body {
     height: 92%;
   }
 }

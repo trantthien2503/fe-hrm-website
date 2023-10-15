@@ -1,5 +1,5 @@
-<div class="_staff_main">
-  <div class="_header">
+<div id="_staff_main" class="_staff_main">
+  <div id="_header" class="_header">
     <span>Số lượng nhân viên: {{staffs.length}}</span>
     <div class="_buttons">
       <div class="_btn_add">
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="_body">
-    <nz-table #fixedTable [nzData]="staffs" [nzScroll]="{ x: '1150px', y: '600px' }">
+    <nz-table #fixedTable [nzData]="staffs" [nzScroll]="{ x: '1150px', y: tableHeight }">
       <thead>
         <tr>
           <th nzLeft>Tên đầy đủ</th>
@@ -50,7 +50,7 @@
   </div>
 </div>
 
-<nz-modal [nzWidth]="'64vw'" [(nzVisible)]="isTemplateAddStaff" nzTitle="Thêm nhân viên"
+<nz-modal [nzStyle]="{ top: '20px' }" [nzWidth]="'95vw'" [(nzVisible)]="isTemplateAddStaff" nzTitle="Thêm nhân viên"
   (nzOnCancel)="outputCancelStaff()" [nzFooter]="null">
   <ng-container *nzModalContent>
     <app-add-staff (outputAddStaff)="outputAddStaff($event)"

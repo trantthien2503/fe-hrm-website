@@ -13,3 +13,9 @@ body {
 .cdk-global-scrollblock {
   overflow-y: hidden;
 }
+
+::ng-deep .ant-table-body {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

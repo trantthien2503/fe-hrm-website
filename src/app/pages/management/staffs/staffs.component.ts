@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ExcelService } from 'src/app/services/excel.service';
 import { StaffsService } from 'src/app/services/staffs.service';
 
@@ -13,11 +13,29 @@ export class StaffsComponent implements OnInit {
   public isTemplateAddStaff = false;
   constructor(
     private staffsService: StaffsService,
+    private changeDetectorRef: ChangeDetectorRef,
     private excelService: ExcelService
   ) {}
 
   ngOnInit() {
     this.getStaffs();
+  }
+
+  tableHeight: string = '';
+  ngAfterViewInit() {
+    if (
+      document.querySelector('._staff_main') &&
+      document.querySelector('.ant-table-thead') &&
+      document.querySelector('._header')
+    ) {
+      this.tableHeight =
+       (document.querySelector('._staff_main')! as HTMLElement).clientHeight -
+       (document.querySelector('.ant-table-thead')! as HTMLElement).clientHeight -
+       (document.querySelector('._header')! as HTMLElement).clientHeight -
+        50 +
+        'px';
+    }
+    this.changeDetectorRef.detectChanges();
   }
 
   getStaffs() {
